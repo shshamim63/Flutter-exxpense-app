@@ -13,6 +13,7 @@ class NewTransaction extends StatelessWidget {
       child: Container(
         padding: const EdgeInsets.all(12),
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.end,
           children: <Widget>[
             TextField(
               style: const TextStyle(
@@ -41,7 +42,10 @@ class NewTransaction extends StatelessWidget {
               },
               child: const Text(
                 'Add Transaction',
-                style: TextStyle(color: Colors.blueGrey),
+                style: TextStyle(
+                  color: Colors.blueGrey,
+                  fontSize: 15,
+                ),
               ),
             ),
           ],
