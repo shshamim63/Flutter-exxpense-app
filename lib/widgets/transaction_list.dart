@@ -33,12 +33,14 @@ class TransactionList extends StatelessWidget {
                             width: 2,
                           ),
                         ),
-                        child: Text(
-                          '\$${transactions[index].amount.toStringAsFixed(2)}',
-                          style: const TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 15,
-                            color: Colors.blueAccent,
+                        child: FittedBox(
+                          child: Text(
+                            '\$${transactions[index].amount.toStringAsFixed(2)}',
+                            style: const TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 15,
+                              color: Colors.blueAccent,
+                            ),
                           ),
                         ),
                       ),

@@ -41,15 +41,21 @@ class Chart extends StatelessWidget {
     return Card(
       elevation: 6,
       margin: EdgeInsets.all(10),
-      child: Row(
-              children: groupTransactionValues.map((gTx) {
-                return ChartBar(
-                    label: gTx['day'] as String,
-                    spendingAmount: gTx['amount'] ,
-                    spendingAmountInPercentage:
-                      totalSpendOfTheWeek == 0.0 ? 0.0 : (gTx['amount'] ) / totalSpendOfTheWeek);
-              }).toList(),
-            ),
+      child: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Row(
+          children: groupTransactionValues.map((gTx) {
+            return Expanded(
+              child: ChartBar(
+                  label: gTx['day'] as String,
+                  spendingAmount: gTx['amount'],
+                  spendingAmountInPercentage: totalSpendOfTheWeek == 0.0
+                      ? 0.0
+                      : (gTx['amount']) / totalSpendOfTheWeek),
+            );
+          }).toList(),
+        ),
+      ),
     );
   }
 }
