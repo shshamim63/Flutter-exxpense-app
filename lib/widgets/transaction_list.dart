@@ -2,6 +2,8 @@ import 'package:expense_tracker/models/transaction.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
+import './no_data.dart';
+
 class TransactionList extends StatelessWidget {
   final List<Transaction> transactions;
 
@@ -12,25 +14,7 @@ class TransactionList extends StatelessWidget {
     return Container(
       height: 400,
       child: transactions.isEmpty
-          ? Column(
-              children: <Widget>[
-                Text(
-                  'No data availabe, Please add transaction',
-                  style: Theme.of(context).textTheme.headline3,
-                ),
-                SizedBox(
-                  height: 20,
-                ),
-                Container(
-                  height: 200,
-                  width: 200,
-                  child: Image.asset(
-                    'assets/images/nodata-found.png',
-                    fit: BoxFit.cover,
-                  ),
-                )
-              ],
-            )
+          ? NoData()
           : ListView.builder(
               itemBuilder: (ctx, index) {
                 return Card(

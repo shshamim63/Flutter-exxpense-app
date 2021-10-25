@@ -1,6 +1,8 @@
+import 'package:expense_tracker/widgets/chart_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
+import './chart_bar.dart';
 import '../models/transaction.dart';
 
 class Chart extends StatelessWidget {
@@ -8,10 +10,10 @@ class Chart extends StatelessWidget {
 
   Chart(this.recentTransactions);
 
-  List<Map<String, Object>> get groupTransactionValues {
+  List<Map<String, dynamic>> get groupTransactionValues {
     return List.generate(7, (index) {
       final weekDay = DateTime.now().subtract(Duration(days: index));
-      double amountSumForADay = 0.0;
+      var amountSumForADay = 0.0;
 
       for (var i = 0; i < recentTransactions.length; i++) {
         if (recentTransactions[i].date.day == weekDay.day &&
@@ -21,7 +23,16 @@ class Chart extends StatelessWidget {
         }
       }
 
-      return {'day': DateFormat.E(weekDay), 'amount': amountSumForADay};
+      return {
+        'day': DateFormat.E().format(weekDay),
+        'amount': amountSumForADay
+      };
+    });
+  }
+
+  double get totalSpendOfTheWeek {
+    return groupTransactionValues.fold(0.0, (previousValue, item) {
+      return previousValue += item['amount'];
     });
   }
 
@@ -31,8 +42,14 @@ class Chart extends StatelessWidget {
       elevation: 6,
       margin: EdgeInsets.all(10),
       child: Row(
-        children: <Widget>[],
-      ),
+              children: groupTransactionValues.map((gTx) {
+                return ChartBar(
+                    label: gTx['day'] as String,
+                    spendingAmount: gTx['amount'] ,
+                    spendingAmountInPercentage:
+                      totalSpendOfTheWeek == 0.0 ? 0.0 : (gTx['amount'] ) / totalSpendOfTheWeek);
+              }).toList(),
+            ),
     );
   }
 }
