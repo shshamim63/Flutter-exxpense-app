@@ -70,7 +70,7 @@ class _MyHomePageState extends State<MyHomePage> {
     });
   }
 
-  void _removeTransaction (int index) {
+  void _removeTransaction(int index) {
     setState(() {
       _userTransactions.removeAt(index);
     });
@@ -91,25 +91,36 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Personal Expense'),
-        actions: <Widget>[
-          IconButton(
-            onPressed: () => _showAddNewTransaction(context),
-            icon: const Icon(
-              Icons.add,
-              color: Colors.lime,
-            ),
+    final appBar = AppBar(
+      title: const Text('Personal Expense'),
+      actions: <Widget>[
+        IconButton(
+          onPressed: () => _showAddNewTransaction(context),
+          icon: const Icon(
+            Icons.add,
+            color: Colors.lime,
           ),
-        ],
-      ),
+        ),
+      ],
+    );
+    return Scaffold(
+      appBar: appBar,
       body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
-            Chart(_recentTransactions),
-            TransactionList(_userTransactions, _removeTransaction),
+            SizedBox(
+              height: (MediaQuery.of(context).size.height -
+                      appBar.preferredSize.height - MediaQuery.of(context).padding.top) *
+                  0.3,
+              child: Chart(_recentTransactions),
+            ),
+            SizedBox(
+              height: (MediaQuery.of(context).size.height -
+                      appBar.preferredSize.height - MediaQuery.of(context).padding.top) *
+                  0.7,
+              child: TransactionList(_userTransactions, _removeTransaction),
+            ),
           ],
         ),
       ),
