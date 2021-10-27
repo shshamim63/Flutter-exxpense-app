@@ -52,7 +52,12 @@ class _NewTransactionState extends State<NewTransaction> {
   Widget build(BuildContext context) {
     return Card(
       child: Container(
-        padding: const EdgeInsets.all(12),
+        padding: const EdgeInsets.only(
+          top: 10,
+          left: 10,
+          right: 10,
+          bottom: 10,
+        ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.end,
           children: <Widget>[
