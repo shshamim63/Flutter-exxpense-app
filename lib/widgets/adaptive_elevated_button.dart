@@ -15,7 +15,7 @@ class AdaptiveElevatedButton extends StatelessWidget {
         ? CupertinoButton(
             child: Text(
               labelText,
-              style: TextStyle(
+              style: const TextStyle(
                 color: Colors.white,
                 fontSize: 15,
               ),
@@ -26,7 +26,7 @@ class AdaptiveElevatedButton extends StatelessWidget {
             onPressed: _handlerFunction,
             child: Text(
               labelText,
-              style: TextStyle(
+              style: const TextStyle(
                 color: Colors.white,
                 fontSize: 15,
               ),

@@ -24,7 +24,7 @@ class MyApp extends StatelessWidget {
               ),
             ),
         fontFamily: 'Quicksand',
-        appBarTheme: AppBarTheme(
+        appBarTheme: const AppBarTheme(
           titleTextStyle: TextStyle(
             fontFamily: 'OpenSans',
             fontSize: 20,
@@ -34,7 +34,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSwatch(primarySwatch: Colors.purple)
             .copyWith(secondary: Colors.amber),
       ),
-      home: MyHomePage(),
+      home: const MyHomePage(),
     );
   }
 }
