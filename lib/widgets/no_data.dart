@@ -14,10 +14,10 @@ class NoData extends StatelessWidget {
             ),
           ),
           SizedBox(
-            height: constraints.maxHeight * 0.1,
+            height: constraints.maxHeight * 0.05,
           ),
           SizedBox(
-            height: constraints.maxHeight * 0.6,
+            height: constraints.maxHeight * 0.65,
             width: constraints.maxWidth * 0.7,
             child: Image.asset(
               'assets/images/nodata-found.png',
