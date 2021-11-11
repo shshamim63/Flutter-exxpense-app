@@ -100,9 +100,9 @@ class _MyHomePageState extends State<MyHomePage> with WidgetsBindingObserver {
     });
   }
 
-  void _removeTransaction(int index) {
+  void _removeTransaction(String id) {
     setState(() {
-      _userTransactions.removeAt(index);
+      _userTransactions.removeWhere((element) => element.id == id);
     });
   }
 

@@ -15,15 +15,14 @@ class TransactionList extends StatelessWidget {
   Widget build(BuildContext context) {
     return transactions.isEmpty
         ? NoData()
-        : ListView.builder(
-            itemBuilder: (ctx, index) {
-              return TransactionItem(
-                transaction: transactions[index],
-                removeTransactionFromList: removeTransactionFromList,
-                itemIndex: index,
-              );
-            },
-            itemCount: transactions.length,
-          );
+        : ListView(children: [
+            ...transactions
+                .map((tx) => TransactionItem(
+                      transaction: tx,
+                      removeTransactionFromList: removeTransactionFromList,
+                      itemIndex: tx.id,
+                    ))
+                .toList()
+          ]);
   }
 }

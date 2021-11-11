@@ -13,7 +13,7 @@ class TransactionItem extends StatelessWidget {
 
   final Transaction transaction;
   final Function removeTransactionFromList;
-  final int itemIndex;
+  final String itemIndex;
 
   @override
   Widget build(BuildContext context) {
